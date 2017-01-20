@@ -8,17 +8,21 @@ opts_chunk$set(eval = FALSE)
 
 ## ----start-project-------------------------------------------------------
 #  library("workflowr")
-#  start_project("A new project", "new-project")
+#  wflow_start("A new project", "~/new-project")
 
-## ----render-site---------------------------------------------------------
-#  render_site(input = "analysis/")
+## ----wflow-build---------------------------------------------------------
+#  wflow_build()
+
+## ----wflow-build-dry-run-------------------------------------------------
+#  wflow_build(dry_run = TRUE)
 
 ## ----open-rmd------------------------------------------------------------
-#  open_rmd("first-analysis.Rmd")
+#  wflow_open("first-analysis.Rmd")
 
-## ----make-site-----------------------------------------------------------
-#  make_site()
+## ----wflow_commit--------------------------------------------------------
+#  # Assuming working directory is `analysis/`. Run getwd() to confirm
+#  wflow_commit(commit_files = c("about.Rmd", "index.Rmd", "first-analysis.Rmd"))
 
-## ----commit-site---------------------------------------------------------
-#  commit_site()
+## ----wflow-commit-all----------------------------------------------------
+#  wflow_commit(all = TRUE)
 

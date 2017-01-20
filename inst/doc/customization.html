@@ -12,12 +12,50 @@
 
 <meta name="author" content="John Blischak" />
 
-<meta name="date" content="2017-01-06" />
+<meta name="date" content="2017-01-20" />
 
 <title>Customize your research website</title>
 
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 
 
@@ -31,8 +69,9 @@
 
 
 <h1 class="title toc-ignore">Customize your research website</h1>
+<h3 class="subtitle"><em>workflowr version 0.3.0</em></h3>
 <h4 class="author"><em>John Blischak</em></h4>
-<h4 class="date"><em>2017-01-06</em></h4>
+<h4 class="date"><em>2017-01-20</em></h4>
 
 
 <div id="TOC">
@@ -40,13 +79,13 @@
 <li><a href="#adding-project-details">Adding project details</a></li>
 <li><a href="#changing-the-theme">Changing the theme</a></li>
 <li><a href="#customize-the-navigation-bar">Customize the navigation bar</a></li>
-<li><a href="#add-a-results-page">Add a results page</a></li>
+<li><a href="#add-a-links-page">Add a links page</a></li>
 <li><a href="#customize-the-footer">Customize the footer</a></li>
 <li><a href="#setup-ssh-keys">Setup SSH keys</a></li>
 </ul>
 </div>
 
-<p>There are many ways to custome your research website. Below are some common options.</p>
+<p>There are many ways to customize your research website. Below are some common options.</p>
 <div id="adding-project-details" class="section level2">
 <h2>Adding project details</h2>
 <p>workflowr automatically creates many files when the project is first started. As a first step for customizing your site, add the following information:</p>
@@ -54,20 +93,16 @@
 <li>Briefly describe your project in <code>analysis/index.Rmd</code></li>
 <li>Share details about yourself in <code>analysis/about.Rmd</code></li>
 <li>Copy the text for a license into <code>LICENSE</code> and state the name of the license in <code>analysis/license.Rmd</code>. See <a href="http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002598">A Quick Guide to Software Licensing for the Scientist-Programmer</a> by Morin et al., 2012 for advice. If you’re ambivalent, the MIT license is a standard choice</li>
-<li>Decide how authors should attribute your work by providing a citaiton in <code>CITATION</code></li>
+<li>Decide how authors should attribute your work by providing a citation in <code>CITATION</code></li>
 </ul>
 </div>
 <div id="changing-the-theme" class="section level2">
 <h2>Changing the theme</h2>
 <p>The theme is defined in the file <code>analysis/_site.yml</code>. The default is cosmo, but the rmarkdown package accepts multiple Bootstrap themes. These are listed in the <a href="http://rmarkdown.rstudio.com/html_document_format.html#appearance_and_style">rmarkdown documentation</a>. Go to <a href="http://bootswatch.com/">bootswatch.com</a> to compare the bootstrap themes. When typing the theme, make sure it is all lowercase (e.g. spacelab, united, etc.).</p>
-<p>If you are using RStudio (version &gt; 1.0), you can quickly see how the theme looks for one of your files. Open one of your R Markdown files, click Knit so that it appears in the Viewer tab, and then edit <code>analysis/_site.yml</code>. Everytime you save an edit to the file, it will automatically re-render the R Markdown file and update the result in the Viewer (thus you’ll want to use a quick-running file like <code>index.Rmd</code> when testing aesthetic changes).</p>
-<p>Once you have chosen a theme, add and commit the updated <code>analysis/_site.yml</code>.</p>
-<pre><code>git add analysis/_site.yml
-git commit -m &quot;Change theme.&quot;</code></pre>
-<p>Next apply this new theme to every page of the website by running <code>render_site(input = &quot;analysis&quot;)</code>. Then commit the updated website:</p>
-<pre><code>git add docs/
-git commit -m &quot;Apply new theme.&quot;</code></pre>
-<p>Note that the above strategy will commit all HTML files in <code>docs/</code>, even those that correspond to R Markdown files that are untracked or have changes in the working directory. To keep organized, have a clean working directory (i.e. no unsaved changes to any R Markdown files) before updating the theme.</p>
+<p>If you are using RStudio (version &gt; 1.0), you can quickly see how the theme looks for one of your files. Open one of your R Markdown files, click Knit so that it appears in the Viewer tab, and then edit <code>analysis/_site.yml</code>. Every time you save an edit to the file, it will automatically re-render the R Markdown file and update the result in the Viewer (thus you’ll want to use a quick-running file like <code>index.Rmd</code> when testing aesthetic changes).</p>
+<p>Once you have chosen a theme, update the website by running the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wflow_commit</span>(<span class="dt">commit_files =</span> <span class="st">&quot;analysis/_site.yml&quot;</span>, <span class="dt">all =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>This commits <code>analysis/_site.yml</code>, re-builds every HTML file using the new theme, and commits all the updated HTML pages.</p>
 </div>
 <div id="customize-the-navigation-bar" class="section level2">
 <h2>Customize the navigation bar</h2>
@@ -76,20 +111,19 @@ git commit -m &quot;Apply new theme.&quot;</code></pre>
 <pre><code>    - text: &quot;The main result&quot;
       href: main-result.html</code></pre>
 <p>You can also create a drop-down menu from the navigation bar. See the <a href="http://rmarkdown.rstudio.com/rmarkdown_websites.html#site_navigation">rmarkdown documentation</a> for instructions.</p>
-<p>Similar to changing the theme above, you will need to re-render each page of the website (the navbar is embedded within each individual HTML file). Thus you should also try to follow these steps:</p>
-<ol style="list-style-type: decimal">
-<li>Add and commit any changes to R Markdown files in <code>analysis/</code>. This will ensure that the Git commit ID at the top of the file corresponds to the exact version of the R Markdown file that produced the result</li>
-<li>Add and commit <code>analysis/_site.yml</code></li>
-<li>Run <code>render_site(input = &quot;analysis&quot;)</code> to re-render each page</li>
-<li>Add and commit the <code>docs/</code> directory</li>
-</ol>
+<p>Similar to changing the theme above, you will need to re-render each page of the website (the navbar is embedded within each individual HTML file). Thus you could run the same command as above:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wflow_commit</span>(<span class="dt">commit_files =</span> <span class="st">&quot;analysis/_site.yml&quot;</span>, <span class="dt">all =</span> <span class="ot">TRUE</span>)</code></pre></div>
 </div>
-<div id="add-a-results-page" class="section level2">
-<h2>Add a results page</h2>
-<p>To make it easy to navigate to the pages of your website, you can manually add links either to <code>analysis/index.Rmd</code> or to the navigation bar defined in <code>analysis/_site.yml</code>. This can become tedious as the project grows to many files. To create a file called <code>analysis/results.Rmd</code> that lists each analysis file, run the workflowr function <code>create_results()</code>. By default it sorts the files by their filename, but there are other options (see <code>?create_results</code>). Next add this page to the navigation bar in <code>analysis/_site.yml</code> to make it easily accessible.</p>
+<div id="add-a-links-page" class="section level2">
+<h2>Add a links page</h2>
+<p>To make it easy to navigate to the pages of your website, you can manually add links either to <code>analysis/index.Rmd</code> or to the navigation bar defined in <code>analysis/_site.yml</code>. This can become tedious as the project grows to many files. To create a file called <code>analysis/results.Rmd</code> that contains links to each analysis file, run the workflowr function <code>create_links_page()</code>. By default it sorts the files by their filename, but there are other options (see <code>?create_links_page</code>).</p>
+<p>Next add this page to the navigation bar in <code>analysis/_site.yml</code> to make it easily accessible.</p>
 <pre><code>    - text: &quot;Results&quot;
       href: results.html</code></pre>
-<p>Lastly, since the navigation bar was changed, follow the directions above for building and commiting the website. Future updates of <code>results.Rmd</code> will not require re-building the entire website since it is an independent page (as opposed to the navigation bar).</p>
+<p>Lastly, since the navigation bar was changed, re-build the website using the following command:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wflow_commit</span>(<span class="dt">commit_files =</span> <span class="kw">c</span>(<span class="st">&quot;analysis/_site.yml&quot;</span>, <span class="st">&quot;analysis/results.Rmd&quot;</span>),
+             <span class="dt">all =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>Future updates of <code>results.Rmd</code> will not require re-building the entire website since it is an independent page (as opposed to the navigation bar).</p>
 </div>
 <div id="customize-the-footer" class="section level2">
 <h2>Customize the footer</h2>
@@ -103,6 +137,8 @@ git commit -m &quot;Apply new theme.&quot;</code></pre>
 <li>Add your disqus shortname to <code>footer.html</code></li>
 <li>Uncomment the disqus code in <code>footer.html</code></li>
 </ol>
+<p>To change the footer for every page of the website, run the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">wflow_commit</span>(<span class="dt">commit_files =</span> <span class="st">&quot;analysis/include/footer.html&quot;</span>, <span class="dt">all =</span> <span class="ot">TRUE</span>)</code></pre></div>
 </div>
 <div id="setup-ssh-keys" class="section level2">
 <h2>Setup SSH keys</h2>
