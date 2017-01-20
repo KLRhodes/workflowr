@@ -1,7 +1,7 @@
 Package: workflowr
 Type: Package
 Title: A workflow template for creating a research website
-Version: 0.2.0
+Version: 0.3.0
 Author: John Blischak
 Maintainer: John Blischak <jdblischak@uchicago.edu>
 Description: workflowr provides helper functions to get started using R Markdown
@@ -16,13 +16,17 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     git2r,
-    knitr,
+    methods,
     rprojroot,
     rstudioapi,
     stringr,
-    whisker
+    utils,
+    whisker,
+    yaml
 RoxygenNote: 5.0.1
 Suggests:
     devtools,
+    knitr,
     testthat
 VignetteBuilder: knitr
+SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org

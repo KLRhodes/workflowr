@@ -1,6 +1,6 @@
-#' Create a results file
+#' Create a results page with links to analysis files
 #'
-#' \code{create_results} automates the curation of all the analyses for a
+#' \code{create_links_page} automates the curation of all the analyses for a
 #' project.
 #'
 #' By default, this creates the file "results.Rmd" in the analysis/
@@ -30,17 +30,19 @@
 #'
 #' @examples
 #' \dontrun{
-#' create_results()
+#' create_links_page()
 #' }
+#' @import rmarkdown
 #' @export
-create_results <- function(output = "results.Rmd",
+create_links_page <- function(output = "results.Rmd",
                            sort_method = "filename",
                            path = ".",
                            exclude_rmd = NULL,
                            datatable = FALSE) {
   analysis_dir <- rprojroot::find_rstudio_root_file("analysis", path = path)
   # Gather Rmd files, only need basename
-  rmd_files <- list.files(path = analysis_dir, pattern = glob2rx("*Rmd"))
+  rmd_files <- list.files(path = analysis_dir,
+                          pattern = utils::glob2rx("*Rmd"))
   # Files to exclude
   excluded <- c("index.Rmd", "about.Rmd", "license.Rmd", "results.Rmd")
   if (!is.null(exclude_rmd)) {

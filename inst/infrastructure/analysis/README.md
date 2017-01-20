@@ -3,7 +3,7 @@
 Save your R Markdown analyses here. To create a new one, run
 
 ```
-open_rmd("filename.Rmd")
+wflow_open("filename.Rmd")
 ```
 
 Alternatively in RStudio, you can use the dropdown menu: `File` -> `New File` ->
@@ -12,7 +12,7 @@ Alternatively in RStudio, you can use the dropdown menu: `File` -> `New File` ->
 To render your file, run
 
 ```
-make_site()
+wflow_build()
 ```
 
 This will create the HTML file in the website directory `docs/`. The figures
@@ -24,7 +24,7 @@ When you are ready to add the analysis to your research website, add and commit
 the R Markdown file using Git. Then render the HTML, add, and commit it, run
 
 ```
-commit_site()
+wflow_commit()
 ```
 
 Run `vignette("getting-started", "workflowr")` for more details.
